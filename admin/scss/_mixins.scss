@@ -101,5 +101,92 @@
 	*:first-child &{ zoom:1;}
 }
 
+//**----------------------------------------------------
+//Transition and animation mixins
+//----------------------------------------------------**/
 
+@mixin delay($time, $webkit:true){
+  @if($webkit){
+    -webkit-transition-delay: $time;
+  }
+  -moz-transition-delay: $time;
+  -o-transition-delay: $time;    
+}
+
+@mixin duration($time, $webkit:true){
+  @if($webkit){
+    -webkit-transition-duration: $time;
+  } 
+  -moz-transition-duration: $time;
+  -o-transition-duration: $time;
+  transition-duration: $time; 
+}
+
+//The animation
+@mixin keyframeSettings($name:"fadeOut"){
+  @if($name == "fadeIn"){
+    0% {
+      opacity:0;
+    } 
+    100% {
+      opacity:1;
+    }  
+  }@else if($name == "fadeOut"){
+    0% {
+      opacity:1;
+    } 
+    100% {
+      opacity:0;
+    }  
+  }@else{
+    0% {
+      
+    } 
+    100% {
+      
+    }
+  }
+}
+
+//Animation keyframes for each browser
+@mixin keyframes($name){
+  @-webkit-keyframes $name {
+    @include keyframeSettings($name);
+  }
+  @-moz-keyframes $name {
+    @include keyframeSettings($name);
+  }
+  @-ms-keyframes $name {
+    @include keyframeSettings($name);
+  }
+  @-o-keyframes $name {
+    @include keyframeSettings($name);
+  }
+  @keyframes $name {
+    @include keyframeSettings($name);
+  }
+}
+
+// $effect needs a corrosponding keyframe, such as fadeIn, 
+// with corrosponding keyframeSettings.
+// eg @include keyframes(fadeIn); 
+@mixin animateOptions($effect, $time:0.2s, $function:linear) {
+  -moz-animation-fill-mode: both;
+  -ms-animation-fill-mode: both;
+  -o-animation-fill-mode: both;
+  -webkit-animation:$effect $time $function both; //webkit supports this short-hand, moz doesn't yet
+  -moz-animation:$effect $time $function;
+  -ms-animation:$effect $time $function;
+  -o-animation:$effect $time $function;
+  animation:$effect $time $function both;
+}
+
+//* Mixin to override all animation effects */
+@mixin animateNone{
+  animation-name:none;
+  -moz-animation-name:none; /* Firefox */
+  -webkit-animation-name:none; /* Safari and Chrome */
+  -o-animation-name:none; /* Opera */
+  -ms-animation-name:none;
+}
 
