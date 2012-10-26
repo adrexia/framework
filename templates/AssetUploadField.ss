@@ -3,10 +3,9 @@
 	<h3>
 		<span class="step-label">
 			<span class="flyout">1</span><span class="arrow"></span>
-			<span class="title"><% _t('AssetUploadField.ChooseFiles', 'Choose files') %></span>
+			<span class="title" data-help="block" title="<% _t('AssetAdmin.ALLOWEDEXTS', 'Allowed extensions') %>" data-title-content="$Extensions"><% _t('AssetUploadField.ChooseFiles', 'Choose files') %></span>
 		</span>
 	</h3>
-
 
 
 	<div class="ss-uploadfield-item-info">
@@ -27,12 +26,6 @@
 		</div>
 	</div>
 	
-	<span class="ss-uploadfield-view-allowed-extensions"> 
-
-		<em><% _t('AssetAdmin.ALLOWEDEXTS', 'Allowed extensions') %></em>
-		$Extensions
-	</span>	
-
 	<div class="clear"><!-- --></div>
 </div>
 

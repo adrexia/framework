@@ -116,6 +116,7 @@ body, html { font-size: 12px; line-height: 16px; font-family: Arial, sans-serif;
 .cms code { font-family: 'Bitstream Vera Sans Mono','Courier', monospace; }
 
 /** This file defines CMS-specific customizations to the jQuery UI theme. Every rule in this file should be wrapped in the '.cms' selector (to make it more specific), and contain ONLY overwritten jQuery UI rules (with 'ui-' prefix).  This file should be fairly short, as we're using our own custom jQuery UI theme already. TODO Add theme reference  Use _style.scss to add more generic style information, and read the jQuery UI theming API: http://jqueryui.com/docs/Theming/API */
+.cms { /* Fades and background-images don't work well together in IE6, drop the image */ }
 .cms .ui-tabs { padding: 0; background: none; }
 .cms .ui-tabs .ui-widget-header { border: 0; background: none; }
 .cms .ui-tabs .ui-tabs-nav { margin: 0; padding: 0; }
@@ -135,6 +136,9 @@ body, html { font-size: 12px; line-height: 16px; font-family: Arial, sans-serif;
 .cms .ui-widget input, .cms .ui-widget select, .cms .ui-widget textarea, .cms .ui-widget button { color: #444444; font-size: 12px; font-family: Arial, sans-serif; }
 .cms .ui-accordion .ui-accordion-header { border-color: #c0c0c2; margin-bottom: 0; }
 .cms .ui-accordion .ui-accordion-content { border: 1px solid #c0c0c2; border-top: none; }
+.cms .ui-tooltip { padding: 8px; position: absolute; z-index: 9999; -o-box-shadow: 0 0 5px #aaa; -moz-box-shadow: 0 0 5px #aaa; -webkit-box-shadow: 0 0 5px #aaa; box-shadow: 0 0 5px #aaa; }
+* html .cms .ui-tooltip { background-image: none; }
+body .cms .ui-tooltip { border-width: 2px; }
 
 /** This file defines common styles for form elements used throughout the CMS interface. It is an addition to the base styles defined in framework/css/Form.css.  @package framework @subpackage admin */
 /** ---------------------------------------------------- Basic form fields ---------------------------------------------------- */
@@ -598,6 +602,10 @@ body.cms-dialog { overflow: auto; background: url("../images/textures/bg_cms_mai
 .step-label .flyout { height: 18px; font-size: 14px; font-weight: bold; -moz-border-radius-topleft: 3px; -webkit-border-top-left-radius: 3px; border-top-left-radius: 3px; -moz-border-radius-bottomleft: 3px; -webkit-border-bottom-left-radius: 3px; border-bottom-left-radius: 3px; background-color: #667980; padding: 4px 3px 4px 6px; text-align: center; text-shadow: none; color: #fff; }
 .step-label .arrow { height: 26px; width: 10px; background: url('../images/sprites-32x32-sb47394f892.png') 0 -40px no-repeat; margin-right: 4px; }
 .step-label .title { height: 18px; padding: 4px; }
+
+/****Tooltip styling****/
+.tooltip { padding: 10px; display: inline-block; opacity: 0.7; position: relative; background: url("../images/question.png") 0px 5px no-repeat; }
+.tooltip:hover { opacity: 1; text-decoration: none; }
 
 /** -------------------------------------------- Item Edit Form -------------------------------------------- */
 .cms-file-info { overflow: auto; border-bottom: 1px solid rgba(201, 205, 206, 0.8); -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.8); -moz-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.8); box-shadow: 0 1px 0 rgba(255, 255, 255, 0.8); margin-bottom: 8px; }
