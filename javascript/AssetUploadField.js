@@ -3,7 +3,7 @@
 		onmatch: function() {
 			this._super();
 			
-			// Hide the "second step" part until we're actually uploading
+			// Hide the "second step" part until we're actually uplo
 			this.find('.ss-uploadfield-editandorganize').hide();
 		},
 		onunmatch: function() {
