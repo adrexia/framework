@@ -86,14 +86,10 @@
 				
 				// Show validation errors if necessary
 				if(this.hasClass('validationerror')) {
-					// TODO validation shouldnt need a special case
-					statusMessage(ss.i18n._t('ModelAdmin.VALIDATIONERROR', 'Validation Error'), 'bad');
-
 					// Ensure the first validation error is visible
-					var firstTabWithErrors = this.find('.message.validation:first').closest('.tab');
+					var tabError = this.find('.message.validation, .message.required').first().closest('.tab');
 					$('.cms-container').clearCurrentTabState(); // clear state to avoid override later on
-					this.redraw();
-					firstTabWithErrors.closest('.ss-tabset').tabs('select', firstTabWithErrors.attr('id'));
+					tabError.closest('.ss-tabset').tabs('option', 'active', tabError.index('.tab'));
 				}
 
 				this._super();
