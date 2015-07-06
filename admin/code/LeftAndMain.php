@@ -324,7 +324,7 @@ class LeftAndMain extends Controller implements PermissionProvider {
 				FRAMEWORK_ADMIN_DIR . '/thirdparty/history-js/scripts/uncompressed/history.adapter.jquery.js',
 				FRAMEWORK_ADMIN_DIR . '/thirdparty/history-js/scripts/uncompressed/history.html4.js',
 				THIRDPARTY_DIR . '/jstree/jquery.jstree.js',
-				FRAMEWORK_ADMIN_DIR . '/thirdparty/chosen/chosen/chosen.jquery.js',
+				FRAMEWORK_ADMIN_DIR . '/thirdparty/chosen/public/chosen.jquery.js',
 				FRAMEWORK_ADMIN_DIR . '/thirdparty/jquery-hoverIntent/jquery.hoverIntent.js',
 				FRAMEWORK_ADMIN_DIR . '/javascript/jquery-changetracker/lib/jquery.changetracker.js',
 				FRAMEWORK_DIR . '/javascript/i18n.js',
@@ -372,7 +372,7 @@ class LeftAndMain extends Controller implements PermissionProvider {
 
 		Requirements::css(FRAMEWORK_ADMIN_DIR . '/thirdparty/jquery-notice/jquery.notice.css');
 		Requirements::css(THIRDPARTY_DIR . '/jquery-ui-themes/smoothness/jquery-ui.css');
-		Requirements::css(FRAMEWORK_ADMIN_DIR .'/thirdparty/chosen/chosen/chosen.css');
+		Requirements::css(FRAMEWORK_ADMIN_DIR .'/thirdparty/chosen/public/chosen.css');
 		Requirements::css(THIRDPARTY_DIR . '/jstree/themes/apple/style.css');
 		Requirements::css(FRAMEWORK_DIR . '/css/TreeDropdownField.css');
 		Requirements::css(FRAMEWORK_ADMIN_DIR . '/css/screen.css');
@@ -457,7 +457,7 @@ class LeftAndMain extends Controller implements PermissionProvider {
 		// Prevent clickjacking, see https://developer.mozilla.org/en-US/docs/HTTP/X-Frame-Options
 		$this->response->addHeader('X-Frame-Options', 'SAMEORIGIN');
 		$this->response->addHeader('Vary', 'X-Requested-With');
-		
+
 		return $response;
 	}
 
@@ -789,7 +789,7 @@ class LeftAndMain extends Controller implements PermissionProvider {
 		if(!$filterInfo->implementsInterface('LeftAndMain_SearchFilter')) {
 			throw new InvalidArgumentException(sprintf('Invalid filter class passed: %s', $filterClass));
 		}
-		
+
 		return Injector::inst()->createWithArgs($filterClass, array($params));
 	}
 
@@ -1905,7 +1905,7 @@ class LeftAndMain_TreeNode extends ViewableData {
 
 	/**
 	 * Name of method to count the number of children
-	 * 
+	 *
 	 * @var string
 	 */
 	protected $numChildrenMethod;
